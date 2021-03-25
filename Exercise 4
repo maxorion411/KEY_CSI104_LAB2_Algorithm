@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+int main(){
+	double ti,tf;
+	double pa = 9000000;
+	double pd = 3600000;
+	int n;
+	double income;
+	do{
+		printf("Enter your income per months: ");
+		scanf("%lf", &income);
+	} while (income < 1);
+	do{
+		printf("Enter your dependents: ");
+		scanf("%d", &n);
+	} while(n < 1);
+	tf = 12*(pa+n*pd);
+	ti = 12*income - tf;
+	int incomeTax;
+	if(ti <= 0) {
+		incomeTax = 0;
+	}else
+	if(ti <= 5000000) 
+	{
+		incomeTax = 5;
+	}else
+	if(ti > 5000000 || ti <= 10000000){
+		incomeTax = 10;
+	} else
+	if(ti > 10000000 || ti <= 18000000) {
+		incomeTax = 15;
+	} else
+	if(ti > 18000000){
+		incomeTax = 20;
+	} 
+	printf("Your income per month: %.0lf VND\n", income);
+	printf("Your income per year: %.0lf VND\n", income*12);
+	printf("Your taxable income per year: %.0lf VND\n",ti);
+	printf("Your income tax: %d%%\n", incomeTax);
+	return 0;
+}
